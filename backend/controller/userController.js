@@ -150,7 +150,7 @@ const loginUser = async (req, res, next) => {
     try {
         const user = await Users.findOne({ emailAddress: emailAddress });
         if (!user) {
-            return res.status(404).json({
+            return res.status(405).json({
                 message: 'User not found'
             });
         }

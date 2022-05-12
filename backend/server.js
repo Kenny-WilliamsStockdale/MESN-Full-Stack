@@ -4,6 +4,9 @@ const mongoose = require('mongoose');
 const app = express();
 const connectDB = require('./db')
 const { notFound, errorHandler } = require('./middlewares/error.middleware')
+var cors = require('cors')
+
+app.use(cors())
 
 // creates express application
 app.use(express.json());

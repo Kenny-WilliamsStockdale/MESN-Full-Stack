@@ -1,16 +1,22 @@
-
 <script>
-/* -------------------------------------------------------------------------- */
-/*                               Import Section                               */
-/* -------------------------------------------------------------------------- */
-// import CartModal from './CartComponent';
-// import './Header.css';
-// const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-// const handleLogout = () => {
-//     localStorage.removeItem('userInfo');
-//     window.location.href = '/';
-// }
-import {
+  /* -------------------------------------------------------------------------- */
+  /*                               Import Section                               */
+  /* -------------------------------------------------------------------------- */
+  // import CartModal from './CartComponent';
+  // import './Header.css';
+  // const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  // const handleLogout = () => {
+  //     localStorage.removeItem('userInfo');
+  //     window.location.href = '/';
+  // }
+  import { useNavigate } from "svelte-navigator";
+  const navigate = useNavigate();
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+  function handleLogout() {
+    localStorage.removeItem("userInfo");
+    window.location.href = "/";
+  }
+  import {
     Collapse,
     Navbar,
     NavbarToggler,
@@ -21,8 +27,8 @@ import {
     Dropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem
-  } from 'sveltestrap';
+    DropdownItem,
+  } from "sveltestrap";
 
   let isOpen = false;
 
@@ -40,20 +46,40 @@ import {
         <NavLink href="/Product">Product</NavLink>
       </NavItem>
       <NavItem>
-        <NavLink >Cart</NavLink>
+        <NavLink>Cart</NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink href="/Login">Login</NavLink>
-      </NavItem>
-      <Dropdown nav inNavbar>
-        <DropdownToggle nav caret>Options</DropdownToggle>
-        <DropdownMenu end>
-          <DropdownItem>Option 1</DropdownItem>
-          <DropdownItem>Option 2</DropdownItem>
-          <DropdownItem divider />
-          <DropdownItem>Reset</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
+      {#if userInfo}
+        <Dropdown nav inNavbar>
+          <DropdownToggle nav caret>{userInfo.data.firstName}</DropdownToggle>
+          <DropdownMenu end>
+            <DropdownItem
+              id="dropdown-item"
+              on:click={() => {
+                navigate("/Account");
+              }}
+            >
+              <NavLink id="nav-dropdown-item">Profile</NavLink>
+            </DropdownItem>
+            {#if userInfo.data.isMember}
+              <DropdownItem
+                id="dropdown-item"
+                on:click={() => {
+                  navigate("/addProduct");
+                }}
+              >
+                <NavLink id="nav-dropdown-item">Products</NavLink>
+              </DropdownItem>
+            {:else}
+              <DropdownItem divider />
+              <DropdownItem id="dropdown-item" on:click={handleLogout}>
+                <NavLink id="nav-dropdown-item">Logout</NavLink>
+              </DropdownItem>
+            {/if}
+          </DropdownMenu>
+        </Dropdown>
+      {:else}
+        <NavLink href="/Login" id="nav-login">Login</NavLink>
+      {/if}
     </Nav>
   </Collapse>
 </Navbar>
