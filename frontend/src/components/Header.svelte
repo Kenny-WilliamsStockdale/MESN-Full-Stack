@@ -1,0 +1,59 @@
+
+<script>
+/* -------------------------------------------------------------------------- */
+/*                               Import Section                               */
+/* -------------------------------------------------------------------------- */
+// import CartModal from './CartComponent';
+// import './Header.css';
+// const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+// const handleLogout = () => {
+//     localStorage.removeItem('userInfo');
+//     window.location.href = '/';
+// }
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+  } from 'sveltestrap';
+
+  let isOpen = false;
+
+  function handleUpdate(event) {
+    isOpen = event.detail.isOpen;
+  }
+</script>
+
+<Navbar color="light" light expand="md">
+  <NavbarBrand href="/">Stuff and Things Charity</NavbarBrand>
+  <NavbarToggler on:click={() => (isOpen = !isOpen)} />
+  <Collapse {isOpen} navbar expand="md" on:update={handleUpdate}>
+    <Nav class="ms-auto" navbar>
+      <NavItem>
+        <NavLink href="/Product">Product</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink >Cart</NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink href="/Login">Login</NavLink>
+      </NavItem>
+      <Dropdown nav inNavbar>
+        <DropdownToggle nav caret>Options</DropdownToggle>
+        <DropdownMenu end>
+          <DropdownItem>Option 1</DropdownItem>
+          <DropdownItem>Option 2</DropdownItem>
+          <DropdownItem divider />
+          <DropdownItem>Reset</DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
+    </Nav>
+  </Collapse>
+</Navbar>
