@@ -69,12 +69,11 @@
               >
                 <NavLink id="nav-dropdown-item">Products</NavLink>
               </DropdownItem>
-            {:else}
+            {/if}
               <DropdownItem divider />
               <DropdownItem id="dropdown-item" on:click={handleLogout}>
                 <NavLink id="nav-dropdown-item">Logout</NavLink>
               </DropdownItem>
-            {/if}
           </DropdownMenu>
         </Dropdown>
       {:else}

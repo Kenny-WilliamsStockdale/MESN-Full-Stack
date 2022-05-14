@@ -8,6 +8,7 @@
 	import AccountEdit from "./pages/AccountEdit.svelte";
 	import Product from "./pages/Product.svelte";
 	import ProductDetail from "./pages/ProductDetail.svelte";
+	import AddProduct from "./pages/AddProduct.svelte";
 	import { Router, Route } from "svelte-navigator";
 </script>
 
@@ -21,6 +22,7 @@
 		<Route path="/AccountEdit" component={AccountEdit} primary={false} />
 		<Route path="/Product" component={Product} primary={false} />
 		<Route path="/ProductDetail/:id" component={ProductDetail} primary={false} />
+		<Route path="/addProduct" component={AddProduct} primary={false} />
 	</main>
 	<Footer />
 </Router>
