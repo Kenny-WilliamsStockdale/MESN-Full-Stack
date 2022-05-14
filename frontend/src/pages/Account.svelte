@@ -144,7 +144,7 @@
   type="button"
   class="btn btn-primary"
   on:click={() => {
-    navigate("/accountEdit");
+    navigate("/AccountEdit");
   }}>Edit</button
 >
 <button

@@ -2,7 +2,6 @@
   /* -------------------------------------------------------------------------- */
   /*                               Import Section                               */
   /* -------------------------------------------------------------------------- */
-  import "./Footer.css";
 </script>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
@@ -65,3 +64,11 @@
     </ul>
   </footer>
 </div>
+
+<style>
+#footer-main {
+  position: fixed;
+  bottom: 0px;
+  width: 90vw;
+}
+</style>
