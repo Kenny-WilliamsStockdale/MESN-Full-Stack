@@ -10,6 +10,7 @@
   //     window.location.href = '/';
   // }
   import { useNavigate } from "svelte-navigator";
+  import CartModal from './CartComponent.svelte';
   const navigate = useNavigate();
   const userInfo = JSON.parse(localStorage.getItem("userInfo"));
   function handleLogout() {
@@ -45,9 +46,7 @@
       <NavItem>
         <NavLink href="/Product">Product</NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink>Cart</NavLink>
-      </NavItem>
+      <CartModal/>
       {#if userInfo}
         <Dropdown nav inNavbar>
           <DropdownToggle nav caret>{userInfo.data.firstName}</DropdownToggle>

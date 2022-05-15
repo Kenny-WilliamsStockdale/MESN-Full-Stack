@@ -12,7 +12,7 @@
     const product = products;
     const cart = JSON.parse(localStorage.getItem("cart"));
     if (cart) {
-      if (cart.find((item) => item.data._id === product.data._id)) {
+      if (cart.find((item) => item._id === product._id)) {
         alert("Already in cart");
         return;
       }
@@ -22,6 +22,7 @@
       localStorage.setItem("cart", JSON.stringify([product]));
     }
     alert("Product added to cart");
+    window.location.reload();
   };
 
   const fetchData = async () => {
