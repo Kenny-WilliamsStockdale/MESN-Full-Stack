@@ -68,7 +68,7 @@
                   >
                 </td>
               </tr>
-            {/each}
+              {/each}
           {:else}
             <tr>
               <td>No Products</td>

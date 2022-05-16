@@ -156,7 +156,7 @@
   }}>Delete</button
 >
 {#if userInfo.data.isMember}
-  null
+<div></div>
 {:else}
   <TokenList />
 {/if}
