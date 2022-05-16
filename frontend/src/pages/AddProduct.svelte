@@ -1,5 +1,6 @@
 <script>
   import { Form, FormGroup, FormText, Input, Label } from "sveltestrap";
+  import MemberProduct from '../components/MemberProduct.svelte';
   import axios from "axios";
 
   let name = "";
@@ -122,3 +123,4 @@
     </div>
   </div>
 </div>
+<MemberProduct />

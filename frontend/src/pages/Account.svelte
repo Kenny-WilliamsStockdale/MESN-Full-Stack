@@ -1,10 +1,11 @@
 <script>
   import { Link, useNavigate } from "svelte-navigator";
   import { Form, FormGroup, FormText, Input, Label } from "sveltestrap";
+  import TokenList from "../components/TokenList.svelte";
   import axios from "axios";
 
   const navigate = useNavigate();
-  const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  const userInfo = JSON.parse(localStorage.getItem("userInfo"));
 
   //Account states
   let firstName = userInfo.data.firstName;
@@ -28,7 +29,7 @@
       .then(() => {
         localStorage.removeItem("userInfo");
         const refreshPage = () => {
-          window.location.href="/";
+          window.location.href = "/";
         };
         setTimeout(refreshPage, 2000);
       })
@@ -154,3 +155,8 @@
     deleteUser();
   }}>Delete</button
 >
+{#if userInfo.data.isMember}
+  null
+{:else}
+  <TokenList />
+{/if}
